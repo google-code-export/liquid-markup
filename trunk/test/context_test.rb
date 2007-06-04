@@ -273,6 +273,14 @@ class ContextTest < Test::Unit::TestCase
     assert_equal 'element151cm', @context['product["variants"].last["title"]']
   end
   
+  def test_access_variable_with_hash_notation
+    @context['foo'] = 'baz'
+    @context['bar'] = 'foo'
+    
+    assert_equal 'baz', @context['["foo"]']
+    assert_equal 'baz', @context['[bar]']
+  end
+  
   def test_access_hashes_with_hash_access_variables
     
     @context['var'] = 'tags'
