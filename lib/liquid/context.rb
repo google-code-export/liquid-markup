@@ -175,16 +175,22 @@ module Liquid
     #  assert_equal 'tobi', @context['hash[name]']
     #
     def variable(markup)
-      parts   = markup.scan(VariableParser)      
+      parts = markup.scan(VariableParser)
+      square_bracketed = /^\[(.*)\]$/
       
-      if object = find_variable(parts.shift)
+      first_part = parts.shift
+      if first_part =~ square_bracketed
+        first_part = resolve($1)
+      end
+      
+      if object = find_variable(first_part)
             
         parts.each do |part|        
 
           # If object is a hash we look for the presence of the key and if its available 
           # we return it
           
-          if part =~ /^\[(.*)\]$/
+          if part =~ square_bracketed
             part = resolve($1)
             
             object[pos] = object[part].call(self) if object[part].is_a?(Proc) and object.respond_to?(:[]=)
