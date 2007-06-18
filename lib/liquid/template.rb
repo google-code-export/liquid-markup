@@ -93,6 +93,8 @@ module Liquid
         Context.new(assigns, registers, @rethrow_errors)
       when nil
         Context.new(assigns, registers, @rethrow_errors)
+      else
+        raise ArgumentError, "Expect Hash or Liquid::Context as parameter"
       end
       
       case args.last
