@@ -192,21 +192,26 @@ You can store data in your own variables, to be used in output or other tags as 
 
 {{{
 {% assign name = 'freestyle' %}
+
 {% for t in collections.tags %}{% if t == name %}
-  &lt;p&gt;Freestyle!&lt;/p&gt;
+  <p>Freestyle!</p>
 {% endif %}{% endfor %}
+
 }}}
 
 Another way of doing this would be to assign true/false values to the variable:
 
 {{{
 {% assign freestyle = false %}
+
 {% for t in collections.tags %}{% if t == 'freestyle %}
   {% assign freestyle = true %}
 {% endif %}{% endfor %}
+
 {% if freestyle %}
-  &lt;p&gt;Freestyle!&lt;/p&gt;
+  <p>Freestyle!</p>
 {% endif %}
+
 }}}
 
 If you want to combine a number of strings into a single string and save it to a variable, you can do that with the <strong><code>capture</code></strong> tag. This tag is a block which "captures" whatever is rendered inside it and assigns it to the given variable instead of rendering it to the screen. 
