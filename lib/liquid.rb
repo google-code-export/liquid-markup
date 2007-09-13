@@ -52,6 +52,7 @@ require 'liquid/template'
 require 'liquid/htmltags'
 require 'liquid/standardfilters'
 require 'liquid/condition'
+require 'liquid/module_ex'
 
 # Load all the tags of the standard library 
 #
