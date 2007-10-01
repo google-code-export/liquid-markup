@@ -8,20 +8,20 @@ module Liquid
   
     @@required_methods = ["__send__", "__id__", "respond_to?", "extend", "methods", "class"]
     
-    @@filters = []
+    @@filters = {}
     
     def initialize(context)
       @context = context
     end
               
     def self.global_filter(filter)
-      raise StandardError, "Passed filter is not a module" unless filter.is_a?(Module)      
-      @@filters << filter
+      raise StandardError, "Passed filter is not a module" unless filter.is_a?(Module)
+      @@filters[filter.name] = filter
     end
     
     def self.create(context)
       strainer = Strainer.new(context)
-      @@filters.each { |m| strainer.extend(m) }
+      @@filters.each { |k,m| strainer.extend(m) }
       strainer
     end
     
