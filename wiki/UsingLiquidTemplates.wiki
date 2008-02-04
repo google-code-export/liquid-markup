@@ -204,7 +204,7 @@ Another way of doing this would be to assign true/false values to the variable:
 {{{
 {% assign freestyle = false %}
 
-{% for t in collections.tags %}{% if t == 'freestyle %}
+{% for t in collections.tags %}{% if t == 'freestyle' %}
   {% assign freestyle = true %}
 {% endif %}{% endfor %}
 
