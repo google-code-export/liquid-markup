@@ -188,7 +188,7 @@ Instead of looping over an existing collection, you can define a range of number
 
 ==Variable Assignment==
 
-You can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the <strong><code>assign</code></strong> tag, which has a pretty straightforward syntax:
+You can store data in your own variables, to be used in output or other tags as desired. The simplest way to create a variable is with the *assign* tag, which has a pretty straightforward syntax:
 
 {{{
 {% assign name = 'freestyle' %}
@@ -214,4 +214,4 @@ Another way of doing this would be to assign true/false values to the variable:
 
 }}}
 
-If you want to combine a number of strings into a single string and save it to a variable, you can do that with the <strong><code>capture</code></strong> tag. This tag is a block which "captures" whatever is rendered inside it and assigns it to the given variable instead of rendering it to the screen. 
+If you want to combine a number of strings into a single string and save it to a variable, you can do that with the *capture* tag. This tag is a block which "captures" whatever is rendered inside it and assigns it to the given variable instead of rendering it to the screen. 
