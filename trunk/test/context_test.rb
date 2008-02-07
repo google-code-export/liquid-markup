@@ -112,6 +112,13 @@ class ContextTest < Test::Unit::TestCase
 
     assert_equal 1000, @context['numbers.size']
     
+  end           
+  
+  def test_hyphenated_variable
+
+    @context['oh-my'] = 'godz'
+    assert_equal 'godz', @context['oh-my']
+    
   end
   
   def test_add_filter

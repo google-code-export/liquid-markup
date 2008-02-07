@@ -96,15 +96,7 @@ HERE
   
   def test_for_and_if
     assigns = {'array' => [1,2,3] }
-    assert_template_result(' yay     ',
-                           '{%for item in array%} {% if forloop.first %}yay{% endif %} {%endfor%}',
-                           assigns)
-    assert_template_result(' yay  boo  boo ',
-                          '{%for item in array%} {% if forloop.first %}yay{% else %}boo{% endif %} {%endfor%}',
-                          assigns)
-    assert_template_result('   boo  boo ',
-                          '{%for item in array%} {% if forloop.first %}{% else %}boo{% endif %} {%endfor%}',
-                          assigns)
+    assert_template_result('+--', '{%for item in array%}{% if forloop.first %}+{% else %}-{% endif %}{%endfor%}', assigns)
   end
   
   def test_limiting
@@ -205,6 +197,12 @@ HERE
   def test_assign
     assigns = {'var' => 'content' }
     assert_template_result('var2:  var2:content','var2:{{var2}} {%assign var2 = var%} var2:{{var2}}',assigns)
+    
+  end
+
+  def test_hyphenated_assign
+    assigns = {'a-b' => '1' }
+    assert_template_result('a-b:1 a-b:2','a-b:{{a-b}} {%assign a-b = 2 %}a-b:{{a-b}}',assigns)
     
   end
 
