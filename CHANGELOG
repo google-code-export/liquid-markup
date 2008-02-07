@@ -1,5 +1,7 @@
 Changelog
 
+Added If with or / and expressions
+
 Implemented .to_liquid for all objects which can be passed to liquid like Strings Arrays Hashes Numerics and Booleans. 
 To export new objects to liquid just implement .to_liquid on them and return objects which themselves have .to_liquid methods. 
 

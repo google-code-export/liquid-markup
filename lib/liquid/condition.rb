@@ -27,10 +27,29 @@ module Liquid
   
     def initialize(left = nil, operator = nil, right = nil)
       @left, @operator, @right = left, operator, right
+      @child_relation  = nil
+      @child_condition = nil
     end
     
     def evaluate(context = Context.new)
-      interpret_condition(left, right, operator, context)
+      result = interpret_condition(left, right, operator, context)        
+      
+      case @child_relation
+      when :or 
+        result || @child_condition.evaluate(context)
+      when :and 
+        result && @child_condition.evaluate(context)
+      else
+        result
+      end      
+    end                    
+    
+    def or(condition)
+      @child_relation, @child_condition = :or, condition
+    end
+
+    def and(condition)
+      @child_relation, @child_condition = :and, condition
     end
   
     def attach(attachment)
@@ -39,6 +58,10 @@ module Liquid
   
     def else?
       false
+    end                          
+    
+    def inspect
+      "#<Condition #{[@left, @operator, @right].compact.join(' ')}>"
     end
     
     private
@@ -83,7 +106,8 @@ module Liquid
         nil
       end
     end    
-  end
+  end           
+
 
   class ElseCondition < Condition
       
