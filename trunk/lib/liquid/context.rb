@@ -128,7 +128,9 @@ module Liquid
       when 'true'
         true
       when 'false'
-        false
+        false               
+      when 'blank'
+        :blank?        
       when 'empty'
         :empty?
       # Single quoted strings
