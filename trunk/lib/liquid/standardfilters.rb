@@ -49,7 +49,13 @@ module Liquid
     
     def strip_html(input)
       input.to_s.gsub(/<.*?>/, '')
+    end       
+    
+    # Remove all newlines from the string
+    def strip_newlines(input)        
+      input.to_s.gsub(/\n/, '')      
     end
+    
     
     # Join elements of the array with certain character between them
     def join(input, glue = ' ')
@@ -79,6 +85,11 @@ module Liquid
     # remove the first occurrences of a substring
     def remove_first(input, string)
       input.to_s.sub(string, '')      
+    end            
+                                             
+    # Add <br /> tags in front of all newlines in input string
+    def newline_to_br(input)        
+      input.to_s.gsub(/\n/, "<br />\n")      
     end
     
     # Reformat a date
