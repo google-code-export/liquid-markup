@@ -63,22 +63,22 @@ module Liquid
             
     # Replace occurrences of a string with another
     def replace(input, string, replacement = '')
-      input.gsub(string, replacement)
+      input.to_s.gsub(string, replacement)
     end
                                                  
     # Replace the first occurrences of a string with another
     def replace_first(input, string, replacement = '')
-      input.sub(string, replacement)
+      input.to_s.sub(string, replacement)
     end              
                                                            
     # remove a substring
     def remove(input, string)
-      input.gsub(string, '')      
+      input.to_s.gsub(string, '')      
     end
                         
     # remove the first occurrences of a substring
     def remove_first(input, string)
-      input.sub(string, '')      
+      input.to_s.sub(string, '')      
     end
     
     # Reformat a date
