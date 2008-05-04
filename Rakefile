@@ -17,7 +17,7 @@ end
 Hoe.new(PKG_NAME, PKG_VERSION) do |p|
   p.rubyforge_name = PKG_NAME
   p.summary        = PKG_DESC
-  p.description    = nil
+  p.description    = PKG_DESC
   p.author         = "Tobias Luetke"
   p.email          = "tobi@leetsoft.com"
   p.url            = "http://www.liquidmarkup.org"    
